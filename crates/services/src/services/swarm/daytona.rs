@@ -723,10 +723,12 @@ mod tests {
 
     #[test]
     fn test_mask_sensitive_command_quoted_values() {
-        let cmd = r#"API_KEY="my-secret-key" OTHER='another-secret' run"#;
+        let cmd = r#"API_KEY="my-secret-key" PASSWORD='another-secret' run"#;
         let masked = mask_sensitive_command(cmd);
         assert!(!masked.contains("my-secret-key"));
         assert!(!masked.contains("another-secret"));
+        assert!(masked.contains("API_KEY=***"));
+        assert!(masked.contains("PASSWORD=***"));
     }
 
     #[test]
