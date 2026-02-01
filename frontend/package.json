@@ -12,7 +12,12 @@
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "lint:i18n": "LINT_I18N=true eslint . --ext ts,tsx --max-warnings 0",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\""
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@codemirror/lang-json": "^6.0.2",
@@ -90,6 +95,7 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.1",
     "@rjsf/core": "6.1.1",
     "@rjsf/utils": "6.1.1",
     "@rjsf/validator-ajv8": "6.1.1",
