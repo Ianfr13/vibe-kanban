@@ -23,8 +23,15 @@ const COMMANDS = {
 
   // Test commands
   runAllTests: 'cd /home/daytona/vibe-kanban/frontend && npx playwright test',
-  runSwarmTests: 'cd /home/daytona/vibe-kanban/frontend && npx playwright test swarm',
+  runSwarmTests: 'cd /home/daytona/vibe-kanban/frontend && npx playwright test swarm.spec.ts',
+  runFullFlowTests: 'cd /home/daytona/vibe-kanban/frontend && DAYTONA_SANDBOX=true npx playwright test project-swarm-flow.spec.ts',
   runHeaded: 'cd /home/daytona/vibe-kanban/frontend && npx playwright test --headed',
+
+  // Specific test suites
+  testProjectSwarmFlow: 'cd /home/daytona/vibe-kanban/frontend && npx playwright test "complete workflow"',
+  testTaskExecution: 'cd /home/daytona/vibe-kanban/frontend && DAYTONA_SANDBOX=true npx playwright test "task moves through"',
+  testApiTasks: 'cd /home/daytona/vibe-kanban/frontend && npx playwright test "API-driven"',
+  testChat: 'cd /home/daytona/vibe-kanban/frontend && npx playwright test "Chat and Execution"',
 
   // Results
   getReport: 'cat /home/daytona/vibe-kanban/frontend/playwright-report/index.html',

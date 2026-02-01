@@ -17,7 +17,10 @@
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:debug": "playwright test --debug",
-    "test:e2e:report": "playwright show-report"
+    "test:e2e:report": "playwright show-report",
+    "test:e2e:swarm": "playwright test swarm.spec.ts",
+    "test:e2e:flow": "DAYTONA_SANDBOX=true playwright test project-swarm-flow.spec.ts",
+    "test:e2e:api": "playwright test 'API-driven'"
   },
   "dependencies": {
     "@codemirror/lang-json": "^6.0.2",
