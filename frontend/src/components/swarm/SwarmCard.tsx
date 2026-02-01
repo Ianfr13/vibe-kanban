@@ -43,7 +43,7 @@ export function SwarmCard({
   const StatusIcon = config.icon;
 
   const handleClick = () => {
-    navigate(`/swarms/${swarm.id}`);
+    navigate(`/swarm/${swarm.id}`);
   };
 
   const handleToggleStatus = (e: React.MouseEvent) => {
