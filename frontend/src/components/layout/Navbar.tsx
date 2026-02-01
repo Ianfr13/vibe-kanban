@@ -237,13 +237,13 @@ export function Navbar() {
               </>
             ) : null}
 
-            {/* <Button variant="ghost" size="sm" className="h-9 gap-1.5" asChild>
-              <Link to="/workspaces">
-                <Sparkles className="h-4 w-4" />
-                {t('common:navbar.tryNewUI')}
+            <Button variant="ghost" size="sm" className="h-9 gap-1.5" asChild>
+              <Link to="/swarm">
+                <Zap className="h-4 w-4" />
+                Swarm
               </Link>
             </Button>
-            <NavDivider /> */}
+            <NavDivider />
 
             <div className="flex items-center gap-1">
               <Button
