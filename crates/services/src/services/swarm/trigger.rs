@@ -45,6 +45,7 @@ impl Default for TriggerConfig {
 }
 
 /// Trigger Engine for automatic task processing
+#[allow(dead_code)]
 pub struct TriggerEngine {
     db_pool: SqlitePool,
     pool_manager: Arc<PoolManager>,
@@ -335,12 +336,11 @@ impl TriggerEngine {
             .map_err(|e| anyhow::anyhow!("Failed to release sandbox: {}", e))?;
 
         // Find and release the sandbox
-        if let Some(task) = SwarmTask::find_by_id(&self.db_pool, task_id).await? {
-            if let Some(sandbox_id_str) = &task.sandbox_id {
-                if let Some(sandbox) = Sandbox::find_by_daytona_id(&self.db_pool, sandbox_id_str).await? {
-                    Sandbox::release_task(&self.db_pool, sandbox.id).await?;
-                }
-            }
+        if let Some(task) = SwarmTask::find_by_id(&self.db_pool, task_id).await?
+            && let Some(sandbox_id_str) = &task.sandbox_id
+            && let Some(sandbox) = Sandbox::find_by_daytona_id(&self.db_pool, sandbox_id_str).await?
+        {
+            Sandbox::release_task(&self.db_pool, sandbox.id).await?;
         }
 
         // Clear processing flag

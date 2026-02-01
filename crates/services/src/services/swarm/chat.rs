@@ -293,6 +293,7 @@ impl ChatService {
     ///
     /// This is the preferred method when you have access to a ChatBroadcaster,
     /// as it will automatically notify all connected WebSocket clients.
+    #[allow(clippy::too_many_arguments)]
     pub async fn post_message_with_broadcast(
         &self,
         pool: &SqlitePool,

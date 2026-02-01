@@ -12,9 +12,8 @@ mod tests {
     };
     use db::models::{
         sandbox::{CreateSandbox, Sandbox},
-        swarm::{CreateSwarm, Swarm, SwarmStatus, UpdateSwarm},
+        swarm::{CreateSwarm, Swarm, SwarmStatus},
         swarm_chat::{CreateSwarmChat, SenderType, SwarmChat},
-        swarm_config::SwarmConfig,
         swarm_task::{CreateSwarmTask, SwarmTask},
     };
     use serde_json::{json, Value};
@@ -295,7 +294,7 @@ mod tests {
 
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}", swarm.id))
+            .uri(format!("/swarms/{}", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -318,7 +317,7 @@ mod tests {
         let fake_id = Uuid::new_v4();
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}", fake_id))
+            .uri(format!("/swarms/{}", fake_id))
             .body(Body::empty())
             .unwrap();
 
@@ -337,7 +336,7 @@ mod tests {
 
         let request = Request::builder()
             .method("PUT")
-            .uri(&format!("/swarms/{}", swarm.id))
+            .uri(format!("/swarms/{}", swarm.id))
             .header("content-type", "application/json")
             .body(Body::from(
                 json!({
@@ -368,7 +367,7 @@ mod tests {
 
         let request = Request::builder()
             .method("PUT")
-            .uri(&format!("/swarms/{}", swarm.id))
+            .uri(format!("/swarms/{}", swarm.id))
             .header("content-type", "application/json")
             .body(Body::from(
                 json!({
@@ -397,7 +396,7 @@ mod tests {
 
         let request = Request::builder()
             .method("DELETE")
-            .uri(&format!("/swarms/{}", swarm.id))
+            .uri(format!("/swarms/{}", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -423,7 +422,7 @@ mod tests {
         let fake_id = Uuid::new_v4();
         let request = Request::builder()
             .method("DELETE")
-            .uri(&format!("/swarms/{}", fake_id))
+            .uri(format!("/swarms/{}", fake_id))
             .body(Body::empty())
             .unwrap();
 
@@ -447,7 +446,7 @@ mod tests {
 
         let request = Request::builder()
             .method("POST")
-            .uri(&format!("/swarms/{}/pause", swarm.id))
+            .uri(format!("/swarms/{}/pause", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -475,7 +474,7 @@ mod tests {
 
         let request = Request::builder()
             .method("POST")
-            .uri(&format!("/swarms/{}/pause", swarm.id))
+            .uri(format!("/swarms/{}/pause", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -499,7 +498,7 @@ mod tests {
 
         let request = Request::builder()
             .method("POST")
-            .uri(&format!("/swarms/{}/resume", swarm.id))
+            .uri(format!("/swarms/{}/resume", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -522,7 +521,7 @@ mod tests {
 
         let request = Request::builder()
             .method("POST")
-            .uri(&format!("/swarms/{}/resume", swarm.id))
+            .uri(format!("/swarms/{}/resume", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -744,7 +743,7 @@ mod tests {
 
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/pool/{}", sandbox_id))
+            .uri(format!("/pool/{}", sandbox_id))
             .body(Body::empty())
             .unwrap();
 
@@ -767,7 +766,7 @@ mod tests {
         let fake_id = Uuid::new_v4();
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/pool/{}", fake_id))
+            .uri(format!("/pool/{}", fake_id))
             .body(Body::empty())
             .unwrap();
 
@@ -797,7 +796,7 @@ mod tests {
 
         let request = Request::builder()
             .method("DELETE")
-            .uri(&format!("/pool/{}", sandbox_id))
+            .uri(format!("/pool/{}", sandbox_id))
             .body(Body::empty())
             .unwrap();
 
@@ -867,7 +866,7 @@ mod tests {
 
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}/chat", swarm.id))
+            .uri(format!("/swarms/{}/chat", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -890,7 +889,7 @@ mod tests {
 
         let request = Request::builder()
             .method("POST")
-            .uri(&format!("/swarms/{}/chat", swarm.id))
+            .uri(format!("/swarms/{}/chat", swarm.id))
             .header("content-type", "application/json")
             .body(Body::from(
                 json!({
@@ -940,7 +939,7 @@ mod tests {
 
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}/chat", swarm.id))
+            .uri(format!("/swarms/{}/chat", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -981,7 +980,7 @@ mod tests {
 
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}/chat?limit=3", swarm.id))
+            .uri(format!("/swarms/{}/chat?limit=3", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -1008,7 +1007,7 @@ mod tests {
 
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}/tasks", swarm.id))
+            .uri(format!("/swarms/{}/tasks", swarm.id))
             .body(Body::empty())
             .unwrap();
 
@@ -1032,7 +1031,7 @@ mod tests {
 
         let request = Request::builder()
             .method("POST")
-            .uri(&format!("/swarms/{}/tasks", swarm.id))
+            .uri(format!("/swarms/{}/tasks", swarm.id))
             .header("content-type", "application/json")
             .body(Body::from(
                 json!({
@@ -1068,7 +1067,7 @@ mod tests {
 
         let request = Request::builder()
             .method("POST")
-            .uri(&format!("/swarms/{}/tasks", swarm.id))
+            .uri(format!("/swarms/{}/tasks", swarm.id))
             .header("content-type", "application/json")
             .body(Body::from(
                 json!({
@@ -1128,7 +1127,7 @@ mod tests {
         // Try to access task from swarm A using swarm B's ID (IDOR attempt)
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}/tasks/{}", swarm_b.id, task.id))
+            .uri(format!("/swarms/{}/tasks/{}", swarm_b.id, task.id))
             .body(Body::empty())
             .unwrap();
 
@@ -1158,7 +1157,7 @@ mod tests {
         // Try to update task from swarm A using swarm B's ID (IDOR attempt)
         let request = Request::builder()
             .method("PATCH")
-            .uri(&format!("/swarms/{}/tasks/{}", swarm_b.id, task.id))
+            .uri(format!("/swarms/{}/tasks/{}", swarm_b.id, task.id))
             .header("content-type", "application/json")
             .body(Body::from(
                 json!({
@@ -1194,7 +1193,7 @@ mod tests {
         // Try to delete task from swarm A using swarm B's ID (IDOR attempt)
         let request = Request::builder()
             .method("DELETE")
-            .uri(&format!("/swarms/{}/tasks/{}", swarm_b.id, task.id))
+            .uri(format!("/swarms/{}/tasks/{}", swarm_b.id, task.id))
             .body(Body::empty())
             .unwrap();
 
@@ -1220,7 +1219,7 @@ mod tests {
         // Access task with correct swarm ID
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}/tasks/{}", swarm.id, task.id))
+            .uri(format!("/swarms/{}/tasks/{}", swarm.id, task.id))
             .body(Body::empty())
             .unwrap();
 
@@ -1247,7 +1246,7 @@ mod tests {
         // Try to access non-existent task
         let request = Request::builder()
             .method("GET")
-            .uri(&format!("/swarms/{}/tasks/{}", swarm.id, fake_task_id))
+            .uri(format!("/swarms/{}/tasks/{}", swarm.id, fake_task_id))
             .body(Body::empty())
             .unwrap();
 
@@ -1295,7 +1294,7 @@ mod tests {
 
         let request = Request::builder()
             .method("DELETE")
-            .uri(&format!("/swarms/{}", swarm.id))
+            .uri(format!("/swarms/{}", swarm.id))
             .body(Body::empty())
             .unwrap();
 

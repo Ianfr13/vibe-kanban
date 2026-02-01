@@ -13,7 +13,7 @@ use regex::Regex;
 use reqwest::{Client, StatusCode};
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
-use tracing::{debug, error, info, warn};
+use tracing::{debug, error, info};
 use shlex;
 use url::Url;
 
@@ -180,6 +180,7 @@ impl Default for CreateSandboxRequest {
 
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
+#[allow(dead_code)]
 pub struct CreateSandboxResponse {
     pub id: String,
     #[serde(default)]
@@ -210,10 +211,12 @@ pub struct ExecuteCommandRequest {
     pub timeout: u32,
 }
 
+#[allow(dead_code)]
 fn default_cwd() -> String {
     "/home/daytona".to_string()
 }
 
+#[allow(dead_code)]
 fn default_timeout() -> u32 {
     60
 }
@@ -277,6 +280,7 @@ pub struct WriteFileRequest {
 
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
+#[allow(dead_code)]
 pub struct PreviewUrlResponse {
     pub url: String,
     pub port: u16,

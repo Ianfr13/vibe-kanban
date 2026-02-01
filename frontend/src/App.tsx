@@ -45,6 +45,10 @@ import { Workspaces } from '@/pages/ui-new/Workspaces';
 import { WorkspacesLanding } from '@/pages/ui-new/WorkspacesLanding';
 import { ElectricTestPage } from '@/pages/ui-new/ElectricTestPage';
 
+// Swarm pages
+import { SwarmPage } from '@/pages/SwarmPage';
+import { SwarmDetailPage } from '@/pages/SwarmDetailPage';
+
 const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
 
 function AppContent() {
@@ -196,6 +200,19 @@ function AppContent() {
               <Route path="create" element={<Workspaces />} />
               <Route path="electric-test" element={<ElectricTestPage />} />
               <Route path=":workspaceId" element={<Workspaces />} />
+            </Route>
+
+            {/* ========== SWARM ROUTES ========== */}
+            <Route
+              path="/swarm"
+              element={
+                <LegacyDesignScope>
+                  <NormalLayout />
+                </LegacyDesignScope>
+              }
+            >
+              <Route index element={<SwarmPage />} />
+              <Route path=":swarmId" element={<SwarmDetailPage />} />
             </Route>
           </SentryRoutes>
         </SearchProvider>

@@ -10,7 +10,7 @@ use std::time::Duration;
 use anyhow::{anyhow, Result};
 use once_cell::sync::Lazy;
 use regex::Regex;
-use tracing::{debug, error, info, warn};
+use tracing::{error, info, warn};
 use uuid::Uuid;
 
 use db::models::swarm_task::SwarmTask;
@@ -47,6 +47,7 @@ pub struct ExecutionResult {
 }
 
 /// Task Executor for running tasks in sandboxes
+#[allow(dead_code)]
 pub struct TaskExecutor {
     daytona: Arc<DaytonaClient>,
     pool_manager: Arc<PoolManager>,

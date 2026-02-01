@@ -294,11 +294,11 @@ impl LogBroadcaster {
     pub async fn cleanup_channel(&self, task_id: Uuid) {
         let mut channels = self.channels.write().await;
 
-        if let Some(sender) = channels.get(&task_id) {
-            if sender.receiver_count() == 0 {
-                channels.remove(&task_id);
-                tracing::debug!(task_id = %task_id, "Cleaned up log channel");
-            }
+        if let Some(sender) = channels.get(&task_id)
+            && sender.receiver_count() == 0
+        {
+            channels.remove(&task_id);
+            tracing::debug!(task_id = %task_id, "Cleaned up log channel");
         }
     }
 
@@ -420,11 +420,11 @@ impl ChatBroadcaster {
     pub async fn cleanup_channel(&self, swarm_id: Uuid) {
         let mut channels = self.channels.write().await;
 
-        if let Some(sender) = channels.get(&swarm_id) {
-            if sender.receiver_count() == 0 {
-                channels.remove(&swarm_id);
-                tracing::debug!(swarm_id = %swarm_id, "Cleaned up chat channel");
-            }
+        if let Some(sender) = channels.get(&swarm_id)
+            && sender.receiver_count() == 0
+        {
+            channels.remove(&swarm_id);
+            tracing::debug!(swarm_id = %swarm_id, "Cleaned up chat channel");
         }
     }
 

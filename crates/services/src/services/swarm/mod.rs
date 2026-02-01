@@ -8,6 +8,7 @@ mod chat;
 mod daytona;
 mod executor;
 mod pool;
+#[allow(clippy::module_inception)]
 mod swarm;
 mod trigger;
 

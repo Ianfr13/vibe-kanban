@@ -85,7 +85,7 @@ export function SwarmDetail({
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b">
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" onClick={() => navigate('/swarms')}>
+          <Button variant="ghost" size="sm" onClick={() => navigate('/swarm')}>
             <ArrowLeft className="h-4 w-4 mr-1" />
             Swarms
           </Button>
